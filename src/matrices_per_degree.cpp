@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
         meta.invokeMethod(obj, "setElement", Q_ARG(QString, 0), Q_ARG(int, 0), Q_ARG(int, 0));
         meta.invokeMethod(obj, "getSize");
         meta.invokeMethod(obj, "setSize", Q_ARG(int, 3));
+        meta.invokeMethod(obj, "reload", Q_ARG(int, 3));
     }
 
 

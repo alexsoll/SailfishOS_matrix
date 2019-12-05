@@ -23,6 +23,7 @@ public:
     Q_INVOKABLE int getSize();
     Q_INVOKABLE float getElement(int i, int j);
     Q_INVOKABLE void setElement(QString element, int i, int j);
+    Q_INVOKABLE void reload(int s);
     Matrix operator * (Matrix c);
     Matrix operator = (Matrix c);
     Matrix operator + (Matrix c);

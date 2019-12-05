@@ -42,6 +42,28 @@ int Matrix::getSize()
     return this->size;
 }
 
+void Matrix::reload(int s)
+{
+    for (int i =0; i < this->size; i++) {
+        delete[] mas[i];
+    }
+    delete[] mas;
+
+    this->size = s;
+    mas = new float*[size];
+    for(int i=0; i<size; i++)
+    {
+        mas[i]=new float[size];
+    }
+    for(int i=0; i<size; i++)
+    {
+        for(int j=0; j<size; j++)
+        {
+            mas[i][j]=1;
+        }
+    }
+}
+
 void Matrix::degree(int d)
 {
     Matrix m2(this->size);
@@ -123,15 +145,15 @@ Matrix Matrix::operator * (Matrix c)
     size=c.size;
     float buf=0;
     int xk=0, yk=0;
-    for(int y=0; y<size; y++)
+    for(int i=0; i<size; i++)
     {
-        for(int i=0; i<size; i++)
+        for(int j=0; j<size; j++)
         {
-            for(int j=0; j<size; j++)
+            for(int k=0; k<size; k++)
             {
-                buf+=this->mas[i][j]*c.mas[j][y];
+                buf+=this->mas[i][k]*c.mas[k][j];
             }
-            m2.mas[xk][yk]=buf;
+            m2.mas[i][j]=buf;
             buf=0;
             yk++;
         }
